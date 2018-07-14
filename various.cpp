@@ -17,6 +17,7 @@
 #include "StaticFunction.h"
 #include "Function.h"
 #include "FastDelegate.h"
+#include "smallfun.hpp"
 
 #ifndef _WIN32
   #include "cxx_function.hpp"
@@ -85,6 +86,7 @@ typedef gnr::forwarder<int(int), 48> gnr_forwarder;
 typedef embxx::util::StaticFunction<int(int), 48> embxx_util_StaticFunction;
 typedef Function<int(int), 56> Function_;
 typedef fastdelegate::FastDelegate1<int, int> FastDelegate1;
+typedef smallfun::SmallFun<int(int), 48> SmallFun;
 
 namespace cases
 {
@@ -244,6 +246,7 @@ void benchmark1(char const* name)
         (Perf< gnr_forwarder >)
         (Perf< embxx_util_StaticFunction >)
         (Perf< Function_ >)
+        (Perf< SmallFun >)
     )
     std::cout << std::endl;
 }
@@ -268,6 +271,7 @@ void benchmark2(char const* name)
         (Perf< gnr_forwarder >)
         (Perf< embxx_util_StaticFunction >)
         (Perf< Function_ >)
+        (Perf< SmallFun >)
     )
     std::cout << std::endl;
 }
@@ -294,6 +298,7 @@ int main(int /*argc*/, char* /*argv*/[])
     SHOW_SIZE(gnr_forwarder);
     SHOW_SIZE(embxx_util_StaticFunction);
     SHOW_SIZE(Function_);
+    SHOW_SIZE(SmallFun);
     std::cout << std::endl;
     
     BENCHMARK(1, function_pointer);
