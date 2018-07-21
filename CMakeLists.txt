@@ -104,6 +104,8 @@ target_link_libraries(base
   INTERFACE
     Boost::boost)
 
+add_subdirectory(bde)
+
 file(GLOB HEADER *.hpp *.h)
 
 add_executable(overload
@@ -119,4 +121,5 @@ add_executable(various
 
 target_link_libraries(various
   PUBLIC
-    base)
+    base
+    bsls1 bslma1 bslscm1 bslstl1)

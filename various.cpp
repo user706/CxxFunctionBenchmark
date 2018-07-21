@@ -18,6 +18,7 @@
 #include "Function.h"
 #include "FastDelegate.h"
 #include "folly/Function.h"
+#include "bslstl_function.h"
 
 #ifndef _WIN32
   #include "cxx_function.hpp"
@@ -246,6 +247,7 @@ void benchmark1(char const* name)
         (Perf< embxx_util_StaticFunction >)
         (Perf< Function_ >)
         (Perf< folly::Function<int(int)> >)
+        (Perf< bsl::function<int(int)> >)
     )
     std::cout << std::endl;
 }
@@ -271,6 +273,7 @@ void benchmark2(char const* name)
         (Perf< embxx_util_StaticFunction >)
         (Perf< Function_ >)
         (Perf< folly::Function<int(int)> >)
+        (Perf< bsl::function<int(int)> >)
     )
     std::cout << std::endl;
 }
@@ -298,6 +301,7 @@ int main(int /*argc*/, char* /*argv*/[])
     SHOW_SIZE(embxx_util_StaticFunction);
     SHOW_SIZE(Function_);
     SHOW_SIZE(folly::Function<int(int)>);
+    SHOW_SIZE(bsl::function<int(int)>);
     std::cout << std::endl;
     
     BENCHMARK(1, function_pointer);
